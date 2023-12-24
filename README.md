@@ -76,7 +76,9 @@ The EnhancedVolcano package was used to exploratorily analyze visualizing the sa
 ## References
 1. https://faseb.onlinelibrary.wiley.com/doi/epdf/10.1096/fj.14-255000
 2. https://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#why-un-normalized-counts
-3. https://master.bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html 
+3. https://master.bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html
+4. https://www.ebi.ac.uk/gxa/experiments/E-GEOD-58608/Experiment%20Design
+5. https://www.pnas.org/doi/10.1073/pnas.0808376106
 
 
 
