@@ -73,6 +73,11 @@ The EnhancedVolcano package was used to exploratorily analyze visualizing the sa
 
 ![image](https://github.com/maitree-patel/RNASeq-Exploratory-Data-Analysis-of-Human-Skeletal-Muscles/assets/134908239/ac6f2795-6b61-429f-ba47-b8b34340dde4)
 
+## References
+1. https://faseb.onlinelibrary.wiley.com/doi/epdf/10.1096/fj.14-255000
+2. https://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#why-un-normalized-counts
+3. https://master.bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html 
+
 
 
 
