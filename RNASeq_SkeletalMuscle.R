@@ -34,8 +34,11 @@ dds.muscle <- DESeq(dds.obj)
 plotDispEsts(dds.muscle)
 
 #extracting result table from the DESeq2 analysis
-res.muscle <- results(dds.muscle, alpha = 0.05)
+res.muscle <- results(dds.muscle, 
+                      alpha = 0.05)
+
 summary(res.muscle)
+
 View(as.data.frame(res.muscle))
 
 #plotting log2 Fold Change versus normalized mean counts for each gene
@@ -48,13 +51,26 @@ lfc <- lfcShrink(dds = dds.muscle,
                  coef = 2, #has to be same as the design
                  type = "normal")
 
+summary(lfc)
+
 plotMA(lfc,
-       ylim = c(-3,3))
+       ylim = c(-3,3),
+       main = "Log2FC versus Mean of Normalized Counts")
+
 
 #plotting the count of reads for the expression between male and females
 plotCounts(dds.muscle, 
            gene=which.min(res.muscle$padj), 
            intgroup="sex")
+
+#plotting the gene with the highest differential expression
+res.order <- res.muscle[order(abs(res.muscle$log2FoldChange), decreasing = TRUE), ]
+#subset the gene with the largest log2fc
+highest.lfc <- rownames(res.order)[1]
+
+plotCounts(dds.muscle,
+           gene = highest.lfc,
+           intgroup = "sex")
 #gene encodes for ribosomal protein S4 Y-linked 1 (RPS4Y1), a component of 40s ribosomal subunit. 
 #This protein is encoded by this gene along with ribosomal protein S4, X-linked (RPS4X)
 #it is characterised as cancer enhanced, linked to prostatde cancer. expected to see a higher expression level in males
@@ -72,7 +88,7 @@ sampleDistMatrix <- as.matrix(sampleDists)
 library(RColorBrewer)
 
 rownames(sampleDistMatrix) <- paste(colnames(vst), vst$sex, sep = "-")
-colnames(sampleDistMatrix) <- paste(colnames(vst), vst$sex, sep = "-")
+colnames(sampleDistMatrix) <- rep("", ncol(sampleDistMatrix))
 map_colors <- colorRampPalette(rev(brewer.pal(9, "Blues")))(255)
 
 clustering_plot <- heatmap(sampleDistMatrix,
@@ -83,7 +99,7 @@ clustering_plot <- heatmap(sampleDistMatrix,
                            #column distance method
                            clustering_distance_columns = "pearson",
                            show_row_names = TRUE,
-                           show_column_names = TRUE)
+                           show_column_names = FALSE)
 
 #heatmap of expression levels for the top 20 most expressed genes
 #transforming data for better visualisation
@@ -101,7 +117,7 @@ library(org.Hs.eg.db)
 columns(org.Hs.eg.db)
 heatmap_data$GENEID <- mapIds(org.Hs.eg.db,
                               keys = rownames(heatmap_data),
-                              column = "GENENAME",
+                              column = "SYMBOL",
                               keytype = "ENSEMBL",
                               multiVals = "first")
 heatmap_data$GENEID
@@ -190,7 +206,7 @@ res.df %>%
   ggplot(aes(x = log2FoldChange,
              y = -log10(padj))) +
   geom_point(aes(col=sig)) +
-  scale_colour_manual(values = c("red", "black"))
+  scale_colour_manual(values = c("black", "red"))
 
 #volcano plot 2
 res.df2 <- as.data.frame(res.muscle) 
@@ -202,7 +218,18 @@ res.df2 %>%
   ggplot(aes(x = log2FoldChange,
              y = -log10(padj))) +
   geom_point(aes(col=diffex)) +
-  scale_colour_manual(values = c("red", "black", "dodgerblue"))
+  scale_colour_manual(values = c("red", "black", "dodgerblue")) +
+  labs(title = "Volcano Plot",
+       subtitle = "Significant Downregulated and Upregulated Genes") +
+  geom_label_repel(data = res.df2[genestokeep, ],
+                   mapping = aes(log2FoldChange, -log10(padj), label = rownames(heatmap_data)),
+                   size = 2)
+
+library(knitr)
+library(ggrepel)
+
+res.df2 %>% 
+  count(diffex)
 
 #volcano plot 3
 res.df3 <- as.data.frame(res.muscle)
@@ -222,7 +249,7 @@ res.df3 %>%
   ylim(0,25)
 
 #uwsing enhancedcolcano package
-BiocManager::install("EnhancedVolcano")
+#BiocManager::install("EnhancedVolcano")
 library(EnhancedVolcano)
 EnhancedVolcano(lfc,
                 lab = rownames(res.muscle),
