@@ -80,6 +80,7 @@ The EnhancedVolcano package was used to exploratorily analyze visualizing the sa
 4. https://www.ebi.ac.uk/gxa/experiments/E-GEOD-58608/Experiment%20Design
 5. https://www.pnas.org/doi/10.1073/pnas.0808376106
 6. https://uclouvain-cbio.github.io/WSBIM2122/sec-rnaseq.html
+7. https://uclouvain-cbio.github.io/WSBIM2122/sec-rnaseq.html
 
 
 
