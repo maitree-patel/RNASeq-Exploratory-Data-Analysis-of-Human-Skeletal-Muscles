@@ -50,6 +50,11 @@ Similarity between the samples were assessed by measuring distances between them
 
 We can see that majorly the male samples cluster closer together with other male samples, same being true for the female samples.
 
+### PCA Plot
+The PCA below shows similar results as the clustering, i.e. distance between the samples, where we see a clear clustering of male samples together and away from the clustering of the female samples.
+
+![image](https://github.com/maitree-patel/RNASeq-Exploratory-Data-Analysis-of-Human-Skeletal-Muscles/assets/134908239/b85f9352-391e-4e1f-b2f5-54dadba2674b)
+
 ### Count Matrix Heatmap
 Heatmap showing expression levels of the top 20 genes were visualized using the Heatmap() function in the ComplexHeatmap package.
 
@@ -58,11 +63,6 @@ Heatmap showing expression levels of the top 20 genes were visualized using the 
 - We can see a large cluster of genes starting from UTY until RPS4Y1 which are Y-linked genes seen to be highly upregulated in male samples with distinct differentiation from the female samples that have them downregulated.
 - The MAOA gene shows upregulation in 5 out of the total 13 male samples and 3 out of the total 13 female sample. MAOA is the Monoamine oxidase A gene, also known as the "warrior gene" which has been linked to behavioural agression.
 - We see the upregulation of the XIST, i.e. X inactive specific transcript gene in all the female samples and a downregulation in the male sample. This gene is involved in an early developmental process of the silencing of one of X chromosome in a pair in females. The gene is linked to the skewed X-linked inactivation disease that favours the inactivation of one chromosome over the other and has been shown to interact with BRCA1, i.e. Breast Cancer 1 Suseptibility protein gene.
-
-### PCA Plot
-The PCA below shows similar results as the clustering, i.e. distance between the samples, where we see a clear clustering of male samples together and away from the clustering of the female samples.
-
-![image](https://github.com/maitree-patel/RNASeq-Exploratory-Data-Analysis-of-Human-Skeletal-Muscles/assets/134908239/b85f9352-391e-4e1f-b2f5-54dadba2674b)
 
 ### Volcano Plot
 The volcano plot are essential visualizations that provide an overview of the expression of genes in the samples. It plots the adjusted p-values, a significance measure, on the Y-axis and the log2FC on the X-axis. The Volcano plot below shows the significantly down- and upregulated genes with the top 20 genes labeled.
