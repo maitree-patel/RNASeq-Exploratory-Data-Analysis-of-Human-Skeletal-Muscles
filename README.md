@@ -17,7 +17,7 @@ For the dispersion estimates for each gene as measured by DESeq, a curve is fit 
 
 ![image](https://github.com/maitree-patel/RNASeq-Exploratory-Data-Analysis-of-Human-Skeletal-Muscles/assets/134908239/52050aa3-a4d9-4404-9a9c-23cafa254000)
 
-The red line is the curve that estimates the dispersion for each gene based on the fitted data. DESeq2 assumes that genes with similar expression levels have similar dispersion. The plot follows the expected curve, i.e. the dispersion decreses as the gene expression increases (mean normalized count).
+DESeq2 assumes that genes with similar expression levels have similar dispersion, and this used to predict the variation of genes around the mean or dispersion. The red line is the curve that estimates the dispersion for each gene based on the fitted data. The plot follows the expected curve, i.e. the dispersion decreses as the gene expression increases (mean normalized count).
 
 ### MA-Plot
 DESeq2 plots the log2FC for mean normalized counts through the plotMA() function, providing a distribution of the estimated log2FC across the genes giving a robust overview. Plot was visulaized using the more informative shrunken results.
@@ -79,6 +79,7 @@ The EnhancedVolcano package was used to exploratorily analyze visualizing the sa
 3. https://master.bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html
 4. https://www.ebi.ac.uk/gxa/experiments/E-GEOD-58608/Experiment%20Design
 5. https://www.pnas.org/doi/10.1073/pnas.0808376106
+6. https://uclouvain-cbio.github.io/WSBIM2122/sec-rnaseq.html
 
 
 
